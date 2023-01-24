@@ -23,10 +23,23 @@ class Board
     def render
         puts "  0 1 2 3"
         @grid.each_with_index do |row, index|
-            row_string = row.map {|card| !card.face_flag ? card.to_s : " "}.join(" ")
+            row_string = row.map {|card| card.face_flag ? card.to_s : " "}.join(" ")
             puts "#{index} #{row_string}"
         end 
     end
 
+    def won?
+        @grid.all? { |row| row.all?(&:face_flag) }
+    end
 
+    def reveal(guess_pos)
+        return if self[guess_pos].face_flag
+        self[guess_pos].reveal
+        self[guess_pos].face_value
+    end
+
+    def [](pos)
+        row, col = pos
+        @grid[row][col]
+    end
 end
