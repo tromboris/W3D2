@@ -22,6 +22,7 @@ class Game
 
     def make_guess(guess)
         if @prev_guess == nil
+            
             @prev_guess = @board[guess]
             @prev_guess.reveal
         else
@@ -29,7 +30,7 @@ class Game
             this_guess.reveal
             system("clear")
             @board.render
-            if prev_guess.face_value != this_guess.face_value
+            if (@prev_guess.face_value != this_guess.face_value) && (@prev_guess.object_id == this_guess.object_id)
                 puts "Try Again"
                 @prev_guess.hide
                 this_guess.hide
