@@ -22,18 +22,19 @@ class Game
 
     def make_guess(guess)
         if @prev_guess == nil
-            
-            @prev_guess = @board[guess]
-            @prev_guess.reveal
+            @prev_guess = guess
+            @board[guess].reveal
         else
-            this_guess = @board[guess]
-            this_guess.reveal
+            this_guess = guess
+            card_1 = @board[@prev_guess]
+            card_2 = @board[this_guess]
+            card_2.reveal
             system("clear")
             @board.render
-            if (@prev_guess.face_value != this_guess.face_value) && (@prev_guess.object_id == this_guess.object_id)
+            if (card_1.face_value != card_2.face_value) || (@prev_guess == this_guess)
                 puts "Try Again"
-                @prev_guess.hide
-                this_guess.hide
+                card_1.hide
+                card_2.hide
             else
                 puts "It's a match!"
             end
