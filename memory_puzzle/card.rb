@@ -24,6 +24,7 @@ class Card
   end
 
   def ==(card_2)
+    return false if card_2 == nil
     @face_value == card_2.face_value
   end
 end

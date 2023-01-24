@@ -11,6 +11,7 @@ class Game
     end
 
     def play
+        @board.populate
         until @board.won?
             system("clear")
             @board.render
@@ -36,6 +37,7 @@ class Game
                 puts "It's a match!"
             end
             @prev_guess = nil
+            sleep 2
         end
     end
 
