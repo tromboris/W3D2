@@ -1,5 +1,6 @@
 class Card 
-  attr_reader :face_value
+  
+  attr_reader :face_value, :face_flag
 
   def initialize(symbol)
     @face_value = symbol

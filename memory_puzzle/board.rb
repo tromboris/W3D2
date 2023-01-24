@@ -20,5 +20,13 @@ class Board
         end
     end
 
+    def render
+        puts "  0 1 2 3"
+        @grid.each_with_index do |row, index|
+            row_string = row.map {|card| !card.face_flag ? card.to_s : " "}.join(" ")
+            puts "#{index} #{row_string}"
+        end 
+    end
+
 
 end
